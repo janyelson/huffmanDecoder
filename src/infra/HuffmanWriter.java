@@ -1,0 +1,37 @@
+package infra;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
+public class HuffmanWriter
+{
+    private static HuffmanWriter instance = null;
+    private String filePath;
+
+    public static HuffmanWriter getInstance(String filePath) {
+
+        if(instance == null) instance = new HuffmanWriter(filePath);
+        return instance;
+    }
+
+    private HuffmanWriter(String filePath)
+    {
+        this.filePath = filePath;
+    }
+
+    public HuffmanWriter()
+    {
+        this("file");
+    }
+
+    public void write(String message)
+    {
+        try {
+            Files.write(Paths.get(filePath), message.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
