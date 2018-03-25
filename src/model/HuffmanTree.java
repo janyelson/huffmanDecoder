@@ -14,8 +14,6 @@ public class HuffmanTree {
         int i = 0;
         HuffmanNode node = root;
 
-        System.out.println(root.getSymbols());
-
         for(; i < message.length(); i++)
         {
             if(message.charAt(i) == '0') node = node.getRightSon();
@@ -23,7 +21,6 @@ public class HuffmanTree {
         }
 
         if(node.getSymbols().size() != 1) return null;
-        //System.out.println(node.getSymbols());
 
         return node;
     }

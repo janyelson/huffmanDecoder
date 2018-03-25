@@ -18,16 +18,12 @@ public class TreeController {
 
         while(sheets.size() > 1)
         {
-            //int[] index = getLastFrequencies();
-            //HuffmanNode node1 = sheets.get(index[0]);
-            //HuffmanNode node2 = sheets.get(index[1]);
             HuffmanNode leftSon = sheets.remove(sheets.size()-1);
             HuffmanNode rightSon = sheets.remove(sheets.size()-1);
 
             HuffmanNode parentNode = new HuffmanNode(leftSon, rightSon);
             sheets.add(parentNode);
 
-            //sheets.sort((o1, o2) -> Integer.compare(o2.getFrequency(), o1.getFrequency()));
             Collections.sort(sheets, Collections.reverseOrder());
         }
 
@@ -41,9 +37,10 @@ public class TreeController {
 
         for(Integer symbol : symbolFrequency.keySet()){
             int frequency = symbolFrequency.get(symbol);
-            System.out.println("Lol: " + symbol);
-            sheets.add(new HuffmanNode(symbol, frequency));
+                sheets.add(new HuffmanNode(symbol, frequency));
         }
+
+        Collections.sort(sheets, Collections.reverseOrder());
 
         /*
         for(HuffmanNode hn : sheets)
@@ -52,11 +49,9 @@ public class TreeController {
         }
         */
 
-        //sheets.sort((o1, o2) -> Integer.compare(o2.getFrequency(), o1.getFrequency()));
-
-        Collections.sort(sheets, Collections.reverseOrder());
     }
 
+    /*
     private int[] getLastFrequencies()
     {
 
@@ -86,5 +81,7 @@ public class TreeController {
 
         return index;
     }
+
+    */
 
 }

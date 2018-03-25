@@ -42,6 +42,7 @@ public class HuffmanDecoder
                 if(currentFrequency.size() == 1)
                 {
                     for(Integer symbol : currentFrequency.keySet()) writeLastChars(symbol, currentFrequency.get(symbol));
+                    huffmanReader.close();
                     break;
                 }
 
@@ -49,7 +50,6 @@ public class HuffmanDecoder
 
                 if (node != null)
                 {
-                    System.out.println("Message: " + message);
                     writeInFile(node.getSymbols().get(0));
                     message = "";
                     huffmanTree = treeController.buildTree(currentFrequency);
@@ -74,8 +74,6 @@ public class HuffmanDecoder
         if(count == 0) currentFrequency.remove(messageDecode);
         else currentFrequency.put(messageDecode, count);
 
-
-        System.out.println("Fr: " + currentFrequency);
         huffmanWriter.write(String.valueOf((char) messageDecode));
 
     }

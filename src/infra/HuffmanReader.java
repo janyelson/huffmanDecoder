@@ -60,5 +60,14 @@ public class HuffmanReader
 
     }
 
+    public void close()
+    {
+        try {
+            fileInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

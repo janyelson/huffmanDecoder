@@ -18,7 +18,15 @@ public class HuffmanWriter
 
     private HuffmanWriter(String filePath)
     {
+
         this.filePath = filePath;
+
+        try {
+            Files.deleteIfExists(Paths.get(filePath));
+            Files.createFile(Paths.get(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public HuffmanWriter()
@@ -30,7 +38,8 @@ public class HuffmanWriter
     {
         try {
             Files.write(Paths.get(filePath), message.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
