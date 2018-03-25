@@ -10,7 +10,7 @@ public class Main
 {
     public static void main (String args[])
     {
-        String fileInputPath = JOptionPane.showInputDialog("File Input Path:");
+        String fileInputPath = "src\\examples\\resultEncoder";//JOptionPane.showInputDialog("File Input Path:");
         String fileOutputPath = "src\\examples\\resultDecoder";
 
         HuffmanCounter huffmanCounter = new HuffmanCounter(fileInputPath);

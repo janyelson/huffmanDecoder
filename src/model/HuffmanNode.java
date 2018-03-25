@@ -9,12 +9,12 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
     private ArrayList<Integer> symbols = new ArrayList<>();
 
 
-    public HuffmanNode(HuffmanNode leftSon, HuffmanNode rightSon){
-        this.leftSon = leftSon;
+    public HuffmanNode(HuffmanNode rightSon, HuffmanNode leftSon){
         this.rightSon = rightSon;
+        this.leftSon = leftSon;
         frequencySum = leftSon.getFrequency() + rightSon.getFrequency();
-        symbols.addAll(leftSon.getSymbols());
         symbols.addAll(rightSon.getSymbols());
+        symbols.addAll(leftSon.getSymbols());
     }
 
     public HuffmanNode(Integer symbol, int frequency) {

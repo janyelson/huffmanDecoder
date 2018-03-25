@@ -21,7 +21,7 @@ public class TreeController {
             HuffmanNode leftSon = sheets.remove(sheets.size()-1);
             HuffmanNode rightSon = sheets.remove(sheets.size()-1);
 
-            HuffmanNode parentNode = new HuffmanNode(leftSon, rightSon);
+            HuffmanNode parentNode = new HuffmanNode(rightSon, leftSon);
             sheets.add(parentNode);
 
             Collections.sort(sheets, Collections.reverseOrder());
@@ -37,17 +37,17 @@ public class TreeController {
 
         for(Integer symbol : symbolFrequency.keySet()){
             int frequency = symbolFrequency.get(symbol);
-                sheets.add(new HuffmanNode(symbol, frequency));
+            sheets.add(new HuffmanNode(symbol, frequency));
         }
 
         Collections.sort(sheets, Collections.reverseOrder());
 
-        /*
+
         for(HuffmanNode hn : sheets)
         {
             System.out.println("Symbol: " + hn.getSymbols() + " - Frequency: " + hn.getFrequency());
         }
-        */
+
 
     }
 

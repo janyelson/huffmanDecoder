@@ -43,6 +43,7 @@ public class HuffmanDecoder
                 {
                     for(Integer symbol : currentFrequency.keySet()) writeLastChars(symbol, currentFrequency.get(symbol));
                     huffmanReader.close();
+                    huffmanWriter.close();
                     break;
                 }
 
@@ -74,7 +75,7 @@ public class HuffmanDecoder
         if(count == 0) currentFrequency.remove(messageDecode);
         else currentFrequency.put(messageDecode, count);
 
-        huffmanWriter.write(String.valueOf((char) messageDecode));
+        huffmanWriter.writeOnFile(messageDecode);
 
     }
 

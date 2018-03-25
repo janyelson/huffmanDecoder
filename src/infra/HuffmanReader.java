@@ -5,7 +5,7 @@ import java.io.*;
 public class HuffmanReader
 {
     private static HuffmanReader instance = null;
-    private FileInputStream fileInputStream;
+    private BufferedReader reader;
 
     public static HuffmanReader getInstance(String filePath) {
 
@@ -15,11 +15,9 @@ public class HuffmanReader
 
     private HuffmanReader(String filePath)
     {
-        File file = new File(filePath);
-
         try {
-            fileInputStream = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
+            reader = new BufferedReader( new InputStreamReader( new FileInputStream( filePath ), "UTF-8" ) );
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -34,12 +32,13 @@ public class HuffmanReader
         String header = "";
         try {
 
-            int current = fileInputStream.read();
+            int current = reader.read();
             while (current != 10) {
                 header += (char) current;
-                current = fileInputStream.read();
+                current = reader.read();
             }
         } catch (IOException e) {
+            close();
             throw new Exception("Falha na leitura de arquivo");
         }
 
@@ -51,10 +50,11 @@ public class HuffmanReader
         int current = -1;
         try {
 
-            current = fileInputStream.read();
+            current = reader.read();
             return current;
 
         } catch (IOException e) {
+            close();
             throw new Exception("Falha na leitura de arquivo");
         }
 
@@ -63,7 +63,7 @@ public class HuffmanReader
     public void close()
     {
         try {
-            fileInputStream.close();
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

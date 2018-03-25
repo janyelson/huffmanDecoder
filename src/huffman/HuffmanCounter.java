@@ -20,6 +20,7 @@ public class HuffmanCounter
             String[] header = huffmanReader.getHeader().split("\\s+");
             for(int i = 1; i < header.length; i = i+2)
             {
+                System.out.println("Char: " + (char) Integer.parseInt(header[i-1]) + " - F: " + Integer.parseInt(header[i]));
                 frequency.put(Integer.parseInt(header[i-1]), Integer.parseInt(header[i]));
             }
         }catch (Exception exception){
