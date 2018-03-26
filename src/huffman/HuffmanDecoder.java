@@ -39,14 +39,6 @@ public class HuffmanDecoder
                 bit = getBit(value, i);
                 message += "" + bit;
 
-                if(currentFrequency.size() == 1)
-                {
-                    for(Integer symbol : currentFrequency.keySet()) writeLastChars(symbol, currentFrequency.get(symbol));
-                    huffmanReader.close();
-                    huffmanWriter.close();
-                    break;
-                }
-
                 node = huffmanTree.getLeaf(message);
 
                 if (node != null)
@@ -56,12 +48,21 @@ public class HuffmanDecoder
                     huffmanTree = treeController.buildTree(currentFrequency);
                 }
 
+                if(currentFrequency.size() == 1)
+                {
+                    for(Integer symbol : currentFrequency.keySet()) writeLastChars(symbol, currentFrequency.get(symbol));
+                    huffmanReader.close();
+                    huffmanWriter.close();
+                    break;
+                }
+
                 i--;
                 if (i < 0) {
                     value = huffmanReader.nextByte();
                     i = 7;
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,6 +82,7 @@ public class HuffmanDecoder
 
     private void writeLastChars(int messageDecode, int frequency)
     {
+        System.out.println("Last symbol: "  + (char) messageDecode + " - F: " + frequency);
         for(int i = 0; i < frequency; i++)
         {
             writeInFile(messageDecode);
