@@ -42,11 +42,12 @@ public class TreeController {
 
         Collections.sort(sheets, Collections.reverseOrder());
 
-
+        /*
         for(HuffmanNode hn : sheets)
         {
             System.out.println("Symbol: " + hn.getSymbols() + " - Frequency: " + hn.getFrequency());
         }
+        */
 
 
     }
