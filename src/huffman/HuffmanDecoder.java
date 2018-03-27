@@ -34,7 +34,7 @@ public class HuffmanDecoder
         try {
             value = huffmanReader.nextByte();
 
-            while (value != -1) {
+            while (value != 300) {
 
                 bit = getBit(value, i);
                 message += "" + bit;
@@ -82,7 +82,7 @@ public class HuffmanDecoder
 
     private void writeLastChars(int messageDecode, int frequency)
     {
-        System.out.println("Last symbol: "  + (char) messageDecode + " - F: " + frequency);
+        //System.out.println("Last symbol: "  + (char) messageDecode + " - F: " + frequency);
         for(int i = 0; i < frequency; i++)
         {
             writeInFile(messageDecode);

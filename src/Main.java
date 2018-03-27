@@ -10,14 +10,14 @@ public class Main
 {
     public static void main (String args[])
     {
-        String fileInputPath = "src\\examples\\resultEncoder";//JOptionPane.showInputDialog("File Input Path:");
+        String fileInputPath = JOptionPane.showInputDialog("File Input Path:");//"src\\examples\\resultEncoder";
         String fileOutputPath = "src\\examples\\resultDecoder";
 
         HuffmanCounter huffmanCounter = new HuffmanCounter(fileInputPath);
         huffmanCounter.readAllFile();
 
-        HuffmanDecoder huffmanDrecrement = new HuffmanDecoder(huffmanCounter.getFrenquency(), fileInputPath, fileOutputPath);
-        huffmanDrecrement.run();
+        HuffmanDecoder huffmanDecrement = new HuffmanDecoder(huffmanCounter.getFrenquency(), fileInputPath, fileOutputPath);
+        huffmanDecrement.run();
 
     }
 }

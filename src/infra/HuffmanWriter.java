@@ -1,17 +1,13 @@
 package infra;
 
-import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class HuffmanWriter
 {
     private static HuffmanWriter instance = null;
-    private BufferedWriter writer;
-
+    private DataOutputStream writer;
     public static HuffmanWriter getInstance(String filePath) {
 
         if(instance == null) instance = new HuffmanWriter(filePath);
@@ -22,7 +18,7 @@ public class HuffmanWriter
     {
 
         try {
-            writer = Files.newBufferedWriter(Paths.get(filePath), StandardCharsets.UTF_8);
+            writer = new DataOutputStream(new FileOutputStream(filePath));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,7 +32,7 @@ public class HuffmanWriter
     public void writeOnFile(int message)
     {
         try {
-            writer.write(message);
+            writer.writeByte(message);
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
